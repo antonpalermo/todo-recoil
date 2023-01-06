@@ -1,12 +1,21 @@
-import { useRecoilValue } from 'recoil'
-import { titleAtom } from '../store'
+import { useSetRecoilState } from 'recoil'
+
+import notesState from '@stores/notes'
 
 export default function Navbar() {
-  const title = useRecoilValue(titleAtom)
+  const setNote = useSetRecoilState(notesState)
 
   return (
     <nav>
-      <h1>{title}</h1>
+      <button
+        onClick={() =>
+          setNote(notes => [
+            ...notes,
+            { id: notes.length, title: 'Untitled Note' },
+          ])
+        }>
+        New Note
+      </button>
     </nav>
   )
 }

@@ -1,18 +1,20 @@
-import { useRecoilState } from 'recoil'
-import { titleAtom } from '../store'
+import { useRecoilValue } from 'recoil'
+
+import notesState from '@stores/notes'
+import Navbar from '@components/Navbar'
 
 export default function Home() {
-  const [title, setTitle] = useRecoilState(titleAtom)
+  const notes = useRecoilValue(notesState)
 
   return (
     <div>
-      <h1>Home</h1>
-      <input
-        type={'text'}
-        placeholder={'insert title'}
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-      />
+      <Navbar />
+      <h1>Notes</h1>
+      {notes.map(note => (
+        <div key={note.id}>
+          <h2>{note.title}</h2>
+        </div>
+      ))}
     </div>
   )
 }
