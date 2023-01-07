@@ -5,7 +5,8 @@
     "baseUrl": ".",
     "paths": {
       "@stores/*": ["src/store/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@styles/globals": ["src/globals.css"]
     },
     "allowJs": true,
     "skipLibCheck": true,
